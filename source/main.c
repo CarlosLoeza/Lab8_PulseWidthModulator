@@ -169,15 +169,15 @@ void Increment_Decrement(){
             }
         break;
     default:
-        Count_State = Count_State;
+        Count_State = Count_Wait;
         break;
     }
 
     switch(Count_State){
     case Count_Up:
-        if(count <9){
+        if(count <8){
             count = count+1;
-	    set_PWM(sound_note)
+	    set_PWM(sound_note);
         }
         break;
     case Count_Down:
@@ -204,8 +204,9 @@ int main(void)
     set_PWM(0);
     sound_note = 261.63;
     PW_State = PW_Start;
-    Count_State = Count_Start;
+    Count_State = Count_Wait;
     on_off_counter = 0;
+    count = 0;
     while (1)
     {
         button = ~PINA & 0x0F;
